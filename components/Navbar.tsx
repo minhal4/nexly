@@ -34,15 +34,15 @@ export default function Navbar() {
   const activeCategory = searchParams.get("category");
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+    <nav className="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+          <Link href="/" className="flex items-center gap-2 shrink-0 group">
+            <div className="w-8 h-8 bg-violet-600 rounded-lg flex items-center justify-center shadow-md shadow-violet-500/30 group-hover:bg-violet-500 transition-colors">
               <Zap className="w-4 h-4 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900 tracking-tight">
+            <span className="text-xl font-black text-white tracking-tight">
               Nexly
             </span>
           </Link>
@@ -53,10 +53,10 @@ export default function Navbar() {
               <Link
                 key={cat.value}
                 href={`/products?category=${cat.value}`}
-                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all whitespace-nowrap ${
                   pathname === "/products" && activeCategory === cat.value
-                    ? "bg-indigo-50 text-indigo-700"
-                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                    ? "bg-violet-500/15 text-violet-400 border border-violet-500/20"
+                    : "text-zinc-400 hover:text-white hover:bg-white/8"
                 }`}
               >
                 {cat.label}
@@ -68,21 +68,21 @@ export default function Navbar() {
           <div className="flex items-center gap-2 shrink-0">
             <form onSubmit={handleSearch} className="hidden sm:block">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500 pointer-events-none" />
                 <Input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search..."
-                  className="pl-9 w-44 h-9 text-sm border-gray-200 focus:border-indigo-400"
+                  className="pl-9 w-44 h-9 text-sm bg-zinc-900 border-white/10 text-white placeholder:text-zinc-500 focus:border-violet-500/50"
                 />
               </div>
             </form>
             <Link
               href="/products"
-              className="relative p-2 hover:bg-gray-100 rounded-full transition-colors"
+              className="relative p-2 hover:bg-white/8 rounded-full transition-colors"
               aria-label="Cart"
             >
-              <ShoppingCart className="w-5 h-5 text-gray-700" />
+              <ShoppingCart className="w-5 h-5 text-zinc-400 hover:text-white transition-colors" />
             </Link>
           </div>
         </div>
